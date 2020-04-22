@@ -10,7 +10,9 @@ This is work is greatly inspired from following sources:
 *  [pytorch vae tutorial](https://github.com/pytorch/examples/tree/master/vae)
 *  [dcgan implemntation by Anish Reddy](https://github.com/anishreddy3/Fashion-MNIST-GAN-Keras)
 
-All models are trained on [Fashion-MNIST dataset](https://github.com/zalandoresearch/fashion-mnist)
+Models can be trained on following datasets:
+* [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist)
+* [MNIST](http://yann.lecun.com/exdb/mnist/)
 
 
 <br/>VAE is implemented using pytorch

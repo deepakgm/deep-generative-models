@@ -9,13 +9,19 @@ from torch import nn, optim
 from torch.nn import functional
 from torchvision import datasets, transforms
 from torchvision.utils import save_image
+from enum import Enum
+
+class Dataset(Enum):
+    mnsit = 1
+    fashion_mnist = 2
+
 
 # configuration parameters
 epochs=10
 batch_size=128
 data_dir='../data' #dir to download dataset
 output_dir='results/' # output dir
-
+data_set=Dataset.mnsit
 
 class VAE:
     def __init__(self,train_data,test_data):
@@ -87,8 +93,12 @@ class Model(nn.Module):
 
 
 # download the Fashion-MNIST data using torchvision dataset
-train_data = torch.utils.data.DataLoader(datasets.FashionMNIST('../data', train=True, download=True, transform=transforms.ToTensor()), batch_size=batch_size, shuffle=True)
-test_data = torch.utils.data.DataLoader(datasets.FashionMNIST('../data', train=False, transform=transforms.ToTensor()), batch_size=batch_size, shuffle=True)
+if data_set==Dataset.fashion_mnist:
+    train_data = torch.utils.data.DataLoader(datasets.FashionMNIST(data_dir, train=True, download=True, transform=transforms.ToTensor()), batch_size=batch_size, shuffle=True)
+    test_data = torch.utils.data.DataLoader(datasets.FashionMNIST(data_dir, train=False, transform=transforms.ToTensor()), batch_size=batch_size, shuffle=True)
+else:
+    train_data = torch.utils.data.DataLoader(datasets.MNIST(data_dir, train=True, download=True, transform=transforms.ToTensor()), batch_size=batch_size, shuffle=True)
+    test_data = torch.utils.data.DataLoader(datasets.MNIST(data_dir, train=False, transform=transforms.ToTensor()), batch_size=batch_size, shuffle=True)
 
 vae=VAE(train_data,test_data)
 # start training the model
