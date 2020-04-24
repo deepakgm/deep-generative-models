@@ -26,3 +26,8 @@ python vae.py
 ```$bash
 python dcgan.py
 ```
+
+
+You can find the links google colab notebooks below:
+* [VAE](https://colab.research.google.com/drive/1QVB3-lie62_G-gaz0sXZ8wP5kCWb5rYW)
+* [DCGAN](https://colab.research.google.com/drive/1cMs5FwnAP_8AMPsQsJpHlKQYDrxX-Saf)
